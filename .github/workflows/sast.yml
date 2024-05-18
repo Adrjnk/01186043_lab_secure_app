@@ -1,4 +1,5 @@
 name: Perform Mixeway Scan
+on: [push, pull_request]
 jobs:
   mixeway-scan:
     name: Mixeway Scanning
