@@ -9,12 +9,11 @@ jobs:
  id: vars
  shell: bash
  run: |
- echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
- echo "::set-output name=sha_short::$(git rev-parse HEAD)"
+ 	echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+ 	echo "::set-output name=sha_short::$(git rev-parse HEAD)"
  - name: Prepare Mixeway docker image
  run: |
- docker pull mixeway/scanner:latest
+ 	docker pull mixeway/scanner:latest
  - name: Run Scan
  run: |
-
-docker run -e OSS_USERNAME=michal.adrjan.stud@pw.edu.pl -e OSS_KEY=c85659a644ddb67d9170dcbbb2937018945caacc -e MIXEWAY_URL=https://hub.mixeway.io -e MIXEWAY_KEY=7442cce0-3edc-483a-a6d0-27f250f7bba4 -e MIXEWAY_PROJECT_ID=145 -e MODE=STANDALONE -e MIXEWAY_PROJECT_NAME=01186043_lab_secure_app -e COMMIT_ID=test -e BRANCH=master -v /opt/lab_sec_audit/sast:/opt/sources mixeway/scanner:latest 
+	docker run -e OSS_USERNAME=michal.adrjan.stud@pw.edu.pl -e OSS_KEY=c85659a644ddb67d9170dcbbb2937018945caacc -e MIXEWAY_URL=https://hub.mixeway.io -e MIXEWAY_KEY=7442cce0-3edc-483a-a6d0-27f250f7bba4 -e MIXEWAY_PROJECT_ID=145 -e MODE=STANDALONE -e MIXEWAY_PROJECT_NAME=01186043_lab_secure_app -e COMMIT_ID=test -e BRANCH=master -v /opt/lab_sec_audit/sast:/opt/sources mixeway/scanner:latest 
